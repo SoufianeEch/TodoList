@@ -1,11 +1,10 @@
-/* Reset */
-
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "JetBrains Mono light", sans-serif;
+  transition: all ease 150ms;
 }
 
 body {
@@ -26,6 +25,10 @@ body {
   box-shadow: 0 2px 10px rgba(73, 73, 73, 0.1);
 }
 
+.container:hover {
+  box-shadow: 0 4px 15px rgba(73, 73, 73, 0.15);
+}
+
 h1 {
   text-align: center;
   margin-bottom: 20px;
@@ -38,6 +41,11 @@ h1 {
 
 h1 svg {
   width: 30px;
+}
+
+h1:hover svg {
+  transform: rotate(5deg);
+  color: #000;
 }
 
 .task-form {
@@ -54,6 +62,12 @@ h1 svg {
   font-size: 1rem;
 }
 
+.task-form input:focus {
+  outline: none;
+  border-color: #000;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
 .task-form button {
   background: #000;
   color: white;
@@ -65,6 +79,15 @@ h1 svg {
   place-items: center;
 }
 
+.task-form button:hover {
+  background: #333;
+  scale: 1.05;
+}
+
+.task-form button:active {
+  transform: translateY(1px);
+}
+
 .task-form button svg {
   width: 1.25rem;
   height: 1.25rem;
@@ -72,21 +95,25 @@ h1 svg {
 
 #task-list {
   list-style: none;
+  cursor: pointer;
 }
 
 #task-list li {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  justify-content: left;
   padding: 10px;
   border-bottom: 1px solid #eee;
-  gap: .5rem;
+  gap: 1rem;
+}
+
+#task-list li:hover {
+  background-color: #f9f9f9;
 }
 
 #task-list li span {
   flex: 1;
 }
+
 #task-list li.completed span {
   text-decoration: line-through;
   color: #888;
@@ -96,29 +123,59 @@ h1 svg {
   width: 1.25rem;
 }
 
+button {
+  cursor: pointer;
+}
+
 .delete-btn {
   border: none;
   background-color: transparent;
+  opacity: 0.7;
+}
+
+.delete-btn:hover {
+  opacity: 1;
+}
+
+.delete-btn:active {
+  transform: scale(0.95);
 }
 
 .delete-btn svg {
-  color: rgb(214, 0, 0);
-  padding: 3px;
+  color: rgba(214, 0, 0, 0.568);
+  padding: 1px;
   width: 24px;
   height: 24px;
   cursor: pointer;
 }
 
+.delete-btn:hover svg {
+  color: rgb(255, 0, 0);
+}
+
 .checkbox {
-  position: relative;
-  width: 1.1rem;
-  height: 1.1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
-.checkbox svg {
-  position: absolute;
-  top: 0;
-  left: 0;
+
+.checkbox:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
 }
-.checkbox:nth-child(1){
-  display: none;
+
+.checkbox:active {
+  transform: scale(0.95);
+}
+
+.unchecked {
+  display: block;
+}
+
+.checked {
+  display: block;
+}
+
+.hidden {
+  display: none !important;
 }
